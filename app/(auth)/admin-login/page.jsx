@@ -10,7 +10,8 @@ function LoginPage() {
 
   return (
     <div className="w-[400px]">
-      <h2 className="text-2xl font-semibold mb-8 text-center">Admin Login</h2>
+      <h2 className="mb-8 text-center text-2xl font-semibold">Admin Login</h2>
+
       <Form
         defaultValues={{
           email: '',
@@ -37,12 +38,12 @@ function LoginPage() {
             rules={{ required: true }}
           />
 
-          <SubmitButton className="bg-primary mt-4 w-full">Log in</SubmitButton>
+          <SubmitButton className="mt-4 w-full bg-primary">Log in</SubmitButton>
         </FormLayout>
       </Form>
 
-      <div className="text-center mt-8">
-        <Link href="/" className="text-primary border-b border-b-primary">
+      <div className="mt-8 text-center">
+        <Link href="/" className="border-b border-b-primary text-primary">
           Go back home
         </Link>
       </div>

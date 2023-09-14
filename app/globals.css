@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sui-sidebar__toggle-button {
+  &:not([aria-label='Close sidebar']) {
+    @apply text-white -mt-1;
+  }
+}
+
+.sui-nav-item__link {
+  &:hover,
+  &[data-active] {
+    @apply bg-primary/10 text-primary;
+  }
+}

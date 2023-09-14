@@ -18,23 +18,23 @@ export default function Home() {
     <>
       <Form defaultValues={{}} onSubmit={onSubmit} className="">
         <FormLayout className="flex flex-col items-center">
-          <h2 className="text-2xl font-semibold mb-4">How would you like to log in?</h2>
+          <h2 className="mb-4 text-2xl font-semibold">How would you like to log in?</h2>
           <SubmitButton
             className="bg-primary"
             type="button"
             size={'lg'}
             onClick={handleMetaMaskLogin}
           >
-            <User weight="fill" className="text-white mr-2" size={20} />
+            <User weight="fill" className="mr-2 text-white" size={20} />
             <span>As a voter (with MetaMask)</span>
           </SubmitButton>
 
           <SubmitButton
-            className="bg-transparent text-primary border border-primary hover:bg-transparent"
+            className="border border-primary bg-transparent text-primary hover:bg-transparent"
             type="button"
             onClick={() => router.push('/admin-login')}
           >
-            <Lock weight="fill" className="text-primary mr-2" size={20} />
+            <Lock weight="fill" className="mr-2 text-primary" size={20} />
             <span>As an admin</span>
           </SubmitButton>
         </FormLayout>
