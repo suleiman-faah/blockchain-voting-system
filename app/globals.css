@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply transition-all duration-100;
+}
+
 .sui-sidebar__toggle-button {
   &:not([aria-label='Close sidebar']) {
-    @apply text-white -mt-1;
+    @apply -mt-1 text-white;
   }
 }
 

@@ -9,14 +9,12 @@ export default function Home() {
 
   function handleMetaMaskLogin() {
     console.log('handleMetaMaskLogin');
-  }
-  function onSubmit() {
-    console.log('Login Submit');
+    router.push('/voter');
   }
 
   return (
     <>
-      <Form defaultValues={{}} onSubmit={onSubmit} className="">
+      <Form onSubmit={() => {}}>
         <FormLayout className="flex flex-col items-center">
           <h2 className="mb-4 text-2xl font-semibold">How would you like to log in?</h2>
           <SubmitButton

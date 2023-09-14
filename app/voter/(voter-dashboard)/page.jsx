@@ -1,51 +1,35 @@
 'use client';
 
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import VoterCard from '~/components/VoterCard';
 
-const DashboardIndexPage = () => {
+const VotingAreaPage = () => {
   return (
     <>
-      <title>Candidate Details</title>
-
-      <TableContainer>
-        <Table size="md" variant="striped" colorScheme="gray">
-          <Thead>
-            <Tr>
-              <Th>Name</Th>
-              <Th>Age</Th>
-              <Th>Party</Th>
-              <Th>Qualification</Th>
-              <Th>Votes</Th>
-            </Tr>
-          </Thead>
-
-          <Tbody>
-            <Tr>
-              <Td>John Doe</Td>
-              <Td isNumeric>67</Td>
-              <Td>Some Useless Party</Td>
-              <Td>Masters</Td>
-              <Td isNumeric>0</Td>
-            </Tr>
-            <Tr>
-              <Td>Samuel L Jackson</Td>
-              <Td isNumeric>52</Td>
-              <Td>Another Useless Party</Td>
-              <Td>Diploma</Td>
-              <Td isNumeric>0</Td>
-            </Tr>
-            <Tr>
-              <Td>Jane Doe</Td>
-              <Td isNumeric>40</Td>
-              <Td>Yet Another Useless Party</Td>
-              <Td>PhD</Td>
-              <Td isNumeric>0</Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
+      <div className="flex flex-wrap gap-5">
+        <VoterCard
+          candidate="John Doe"
+          party="Some Useless Party"
+          onVote={() => {
+            console.log('onVote: John Doe');
+          }}
+        />
+        <VoterCard
+          candidate="Samuel L Jackson"
+          party="Another Useless Party"
+          onVote={() => {
+            console.log('onVote: Samuel L Jackson');
+          }}
+        />
+        <VoterCard
+          candidate="Jane Doe"
+          party="Yet Another Useless Party"
+          onVote={() => {
+            console.log('onVote: Jane Doe');
+          }}
+        />
+      </div>
     </>
   );
 };
 
-export default DashboardIndexPage;
+export default VotingAreaPage;

@@ -3,19 +3,17 @@ import { useEffect } from 'react';
 import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
 import { useReward } from 'react-rewards';
 
-const rewardsConfig = {
-  spread: 180,
-  elementCount: 100,
-  elementSize: 30,
-};
-
 const ChangeStatePage = () => {
-  const { reward } = useReward('confettiId', 'confetti', rewardsConfig);
-  const { reward: balloonsReward, isAnimating: isBalloonsAnimating } = useReward(
-    'balloonsId',
-    'balloons',
-    rewardsConfig,
-  );
+  const { reward } = useReward('confettiId', 'confetti', {
+    spread: 180,
+    elementCount: 100,
+    elementSize: 30,
+  });
+  const { reward: balloonsReward } = useReward('balloonsId', 'balloons', {
+    spread: 120,
+    elementCount: 50,
+    elementSize: 30,
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,7 +53,7 @@ const ChangeStatePage = () => {
               <Td isNumeric>67</Td>
               <Td>Some Useless Party</Td>
               <Td>Masters</Td>
-              <Td isNumeric>0</Td>
+              <Td isNumeric>2</Td>
             </Tr>
             <Tr>
               <Td>Samuel L Jackson</Td>
@@ -69,7 +67,7 @@ const ChangeStatePage = () => {
               <Td isNumeric>40</Td>
               <Td>Yet Another Useless Party</Td>
               <Td>PhD</Td>
-              <Td isNumeric>0</Td>
+              <Td isNumeric>1</Td>
             </Tr>
           </Tbody>
         </Table>

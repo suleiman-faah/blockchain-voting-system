@@ -2,10 +2,14 @@
 
 import { Form, FormLayout, Field, SubmitButton } from '@saas-ui/react';
 import Link from '~/components/Link';
+import { useRouter } from 'next/navigation';
 
 function LoginPage() {
+  const router = useRouter();
+
   function onSubmit(params) {
     console.log('onSubmit:', params);
+    router.push('/admin');
   }
 
   return (
