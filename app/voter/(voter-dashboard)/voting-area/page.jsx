@@ -9,9 +9,8 @@ const AddCandidatePage = () => {
 
   return (
     <>
-      <title>Add Candidates | Admin</title>
       <Form
-        className="mx-auto mt-12 max-w-[800px]"
+        className="max-w-[800px] mx-auto mt-12"
         defaultValues={{
           name: '',
           age: 40,

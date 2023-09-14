@@ -25,7 +25,7 @@ const DashboardIndexPage = () => {
               <Td isNumeric>67</Td>
               <Td>Some Useless Party</Td>
               <Td>Masters</Td>
-              <Td isNumeric>2</Td>
+              <Td isNumeric>0</Td>
             </Tr>
             <Tr>
               <Td>Samuel L Jackson</Td>
@@ -39,7 +39,7 @@ const DashboardIndexPage = () => {
               <Td isNumeric>40</Td>
               <Td>Yet Another Useless Party</Td>
               <Td>PhD</Td>
-              <Td isNumeric>1</Td>
+              <Td isNumeric>0</Td>
             </Tr>
           </Tbody>
         </Table>

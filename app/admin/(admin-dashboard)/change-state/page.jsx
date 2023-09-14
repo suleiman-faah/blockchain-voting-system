@@ -13,7 +13,10 @@ const ChangeStatePage = () => {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-8">Current State: {value}</h2>
+      <title>Change State | Admin</title>
+
+      <h2 className="mb-8 text-2xl font-bold">Current State: {value}</h2>
+
       <Form className="" onSubmit={onChangeState}>
         <FormLayout>
           <RadioGroup defaultValue="2" value={value} onChange={setValue}>
