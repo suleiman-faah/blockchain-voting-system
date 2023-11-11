@@ -4,7 +4,6 @@
   "private": true,
   "lockfileVersion": 2,
   "requires": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "create": "node scripts/createAccount.js",
