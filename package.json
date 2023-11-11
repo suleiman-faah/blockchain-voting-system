@@ -9,6 +9,7 @@
     "create": "node scripts/createAccount.js",
     "build": "next build",
     "start": "next start",
+    "launch": "npm i && npm run dev",
     "lint": "next lint",
     "prettier": "prettier --write \"**/*.{js,ts,jsx,tsx,json,css,pcss,html}\""
   },
