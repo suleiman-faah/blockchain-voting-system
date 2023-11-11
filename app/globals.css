@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply transition-all duration-100;
+}
+
+.sui-sidebar__toggle-button {
+  &:not([aria-label='Close sidebar']) {
+    @apply -mt-1 text-white;
+  }
+}
+
+.sui-nav-item__link {
+  &:hover,
+  &[data-active] {
+    @apply bg-primary/10 text-primary;
+  }
+}
