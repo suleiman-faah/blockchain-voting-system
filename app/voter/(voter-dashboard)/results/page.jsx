@@ -30,7 +30,7 @@ const ChangeStatePage = () => {
         <h2 className="mb-8 text-2xl font-bold">We have a Winner!</h2>
 
         <p id="confettiId" className="text-3xl font-black">
-          John Doe — Some Useless party
+          John Doe — ACP
         </p>
         <p id="balloonsId" className="mt-8 text-xl text-primary">
           2 votes
@@ -52,21 +52,21 @@ const ChangeStatePage = () => {
           <Tbody>
             <Tr>
               <Td>John Doe</Td>
-              <Td isNumeric>67</Td>
+              <Td isNumeric>24</Td>
               <Td>ACP</Td>
               <Td>Masters</Td>
               <Td isNumeric>2</Td>
             </Tr>
             <Tr>
               <Td>Samuel L Jackson</Td>
-              <Td isNumeric>52</Td>
+              <Td isNumeric>31</Td>
               <Td>IFR</Td>
               <Td>Diploma</Td>
               <Td isNumeric>0</Td>
             </Tr>
             <Tr>
               <Td>Jane Doe</Td>
-              <Td isNumeric>40</Td>
+              <Td isNumeric>26</Td>
               <Td>NNY</Td>
               <Td>PhD</Td>
               <Td isNumeric>1</Td>
