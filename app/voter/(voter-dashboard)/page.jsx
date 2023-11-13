@@ -4,33 +4,33 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { SET_VOTE } from '~/redux/reducers/voteSlice';
 import VoterCard from '~/components/VoterCard';
+import Modal from '~/components/Modal';
 import Alert from '~/components/Alert';
 import dotenv from 'dotenv';
-import algosdk, { Algodv2 } from 'algosdk';
+import algosdk from 'algosdk';
 
 dotenv.config();
-
-function voteItem() {
-  const {votee} = useSelector((state) => state.vote);
-
-  return {votee}
-}
 
 const VotingAreaPage = () => {
   const token = {
     'X-API-Key': process.env.NEXT_PUBLIC_API_KEY
   };
   const [userAddress, setUserAddress] = useState("");
-  const [clickedButton, setClickedButton] = useState(null);
-  const [disableAllButtons, setDisableAllButtons] = useState(false);
+  const [candidates, setCandidates] = useState([]);
+
+  useEffect(() => { fetchData(); }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('/candidates.json');
+      const data = await response.json();
+      setCandidates(data);
+    } catch (error) {
+      console.error(`Error fetching data: ${error}`);
+    }
+  };
 
   let client = new algosdk.Algodv2(token, process.env.NEXT_PUBLIC_SERVER_ADDRESS, process.env.NEXT_PUBLIC_SERVER_PORT);
-
-  // const voteItems = [
-  //   { name: "John Doe", value: "John Doe", party: "LFR", age: 67, qualification: "Masters"},
-  //   { name: "Samuel L. Jackson", value: "Samuel L. Jackson", party: "NDA", age: 52, qualification: "Diploma"},
-  //   { name: "Jane Doe", value: "Jane Doe", party: "ICE", age: 40, qualification: "PHD"},
-  // ];
 
   let userAccount = useRef();
   const dispatch = useDispatch();
@@ -49,34 +49,21 @@ const VotingAreaPage = () => {
   }, [userAddress]);
   // console.log(`User Address: ${userAddress}`)
 
-  // read global state of application
-  const readGlobalState = async (index) => {
-    try{
-      let applicationInfoResponse = await client.getApplicationByID(index).do();
-      let globalState = applicationInfoResponse['params']['global-state']
-      return globalState.map((state) =>{
-        return state
-      })
-    }catch(err){
-      Alert(err);
-      console.error(err)
-    }
-  }
   const args = [
     btoa("RegBegin"),
     btoa("RegEnd"),
     btoa("VoteBegin"),
     btoa("VoteEnd"),
     btoa("Creator"),
-  ]
+  ];
 
   //  CALL(NOOP)
   // call application with arguments
   const noop = async (index, choice)  => {
     try{
-      userAccount.current =   await AlgoSigner.accounts({
+      userAccount.current = await AlgoSigner.accounts({
         ledger: 'TestNet'
-      })
+      });
       const sender = userAccount.current[0]['address']
       // console.log(userAccount.current[0]['address'])
       console.log(userAccount.current)
@@ -114,67 +101,61 @@ const VotingAreaPage = () => {
       console.log("confirmed " + confirmedTxn)
 
       //Get the completed Transaction
-      console.log("Transaction " + txId + " confirmed in round " + confirmedTxn["confirmed-round"]);
+    console.log("Transaction " + txId + " confirmed in round " + confirmedTxn["confirmed-round"]);
 
-      // display results
-      let transactionResponse = await client.pendingTransactionInformation(txId).do();
-      console.log("Called app-id: ",transactionResponse['txn']['txn']['apid']);
-      if (transactionResponse['global-state-delta'] !== undefined ) {
-        console.log("Global State updated: ",transactionResponse['global-state-delta']);
-      }
-      if (transactionResponse['local-state-delta'] !== undefined ) {
-        console.log("Local State updated: ",transactionResponse['local-state-delta']);
-      }
-      }catch(err){
-        Alert(err);
-        console.error(err);
-      }
+    // display results
+    let transactionResponse = await client.pendingTransactionInformation(txId).do();
+    console.log("Called app-id: ",transactionResponse['txn']['txn']['apid']);
+    if (transactionResponse['global-state-delta'] !== undefined ) {
+      console.log("Global State updated: ",transactionResponse['global-state-delta']);
+    }
+    if (transactionResponse['local-state-delta'] !== undefined ) {
+      console.log("Local State updated: ",transactionResponse['local-state-delta']);
+    }
+    }catch(err){
+      Alert(err);
+      console.error(err);
+    }
   };
 
-  const submitVoteHandler = (buttonIndex, candidateValue) => {
+  const submitVoteHandler = (id) => {
     //log clicked button
-    console.log(`Button ${buttonIndex} clicked: corresponding to ${candidateValue}`)
-    setClickedButton(buttonIndex);
-    setDisableAllButtons(true);
+    console.log(`You voted user candidate with ID: ${id}`);
 
     const value = candidateValue;
     console.log(value);
     dispatch(SET_VOTE({ candidateValue }));
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+      button.disabled = true;
+    })
+
     // noop(process.env.NEXT_PUBLIC_APP_ID, value);
     noop(buttonIndex, value);
 
+    // return <Modal candidate={candidateValue} />
+
     // noop(process.env.NEXT_PUBLIC_APP_ID, value);
   }
-  useEffect(() => {submitVoteHandler}, [disableAllButtons]);
 
   return (
     <>
+      {/* {getStaticProps()} */}
       <div className="flex flex-wrap gap-5">
-        <VoterCard
-          candidate="John Doe"
-          disabled={disableAllButtons || clickedButton === 1}
-          party="Some Useless Party"
-          onVote={() => {
-            submitVoteHandler(1, "John Doe");
-          }}
-        />
-        <VoterCard
-          candidate="Samuel L Jackson"
-          disabled={disableAllButtons || clickedButton === 2}
-          party="Another Useless Party"
-          onVote={() => {
-            submitVoteHandler(2, "Samuel L Jackson");
-          }}
-        />
-        <VoterCard
-          candidate="Jane Doe"
-          disabled={disableAllButtons || clickedButton === 3}
-          party="Yet Another Useless Party"
-          onVote={() => {
-            submitVoteHandler(3, "Jane Doe");
-          }}
-        />
+        {candidates.map((candidate) =>
+          <div key={candidate.id}>
+            <VoterCard 
+              name={candidate.name}
+              party={candidate.party}
+              age={candidate.age}
+              qualificaton={candidate.qualificaton}
+              onVote={() => submitVoteHandler(candidate.id)}
+            />
+          </div>
+        )}
       </div>
+
     </>
   );
 };

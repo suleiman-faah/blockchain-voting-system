@@ -96,20 +96,10 @@ export default function Home() {
             type="button"
             size={'lg'}
             onClick={connectAlgoSigner}
-            // onClick={handlePeraWalletLogin}
           >
             <User weight="fill" className="mr-2 text-white" size={20} />
             <span>As a voter (with AlgoSigner)</span>
           </SubmitButton>
-
-          {/* <SubmitButton
-            className="border border-primary bg-transparent text-primary hover:bg-transparent"
-            type="button"
-            onClick={() => router.push('/admin-login')}
-          >
-            <Lock weight="fill" className="mr-2 text-primary" size={20} />
-            <span>As an admin</span>
-          </SubmitButton> */}
         </FormLayout>
       </Form>
     </>

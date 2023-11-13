@@ -1,0 +1,31 @@
+{
+  "candidates": [
+    {
+      "id": "3ff0f22ef8844d149b851f618d019ac0",
+      "name": "John Doe",
+      "party": "LFR",
+      "age": 24,
+      "qualification": "Masters"
+    },
+    {
+      "id": "632b735c01254a2caf3422a7920f2433",
+      "name": "Samuel L. Jackson",
+      "party": "NDA",
+      "age": 22,
+      "qualification": "Diploma"
+    },
+    {
+      "id": "d1e738c735844d3bbc5177cefbc5985d",
+      "name": "Jane Doe",
+      "party": "ICE",
+      "age": 21,
+      "qualification": "PHD"
+    }
+  ],
+  "voters": [
+    {
+      "address":"",
+      "candidateId":""
+    }
+  ]
+}
