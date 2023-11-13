@@ -162,7 +162,6 @@ const VotingAreaPage = () => {
           </div>
         )}
       </div>
-
     </>
   );
 };

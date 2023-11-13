@@ -10,6 +10,7 @@ import {
 } from '@saas-ui/react';
 import { Image } from '@chakra-ui/react';
 import { SignOut } from '@phosphor-icons/react';
+import { useRouter } from 'next/navigation';
 import PageTitle from '~/components/PageTitle';
 // import { useRouter } from 'next/navigation';
 import dotenv from 'dotenv';
@@ -31,6 +32,8 @@ dotenv.config();
  */
 const Layout = ({ children, pages, userName, onLogout }) => {
   const [userAddress, setUserAddress] = useState("");
+  const [loggedOut, setLoggedOut] = useState(true)
+  const router = useRouter();
 
   // const router = useRouter();
 
@@ -40,22 +43,28 @@ const Layout = ({ children, pages, userName, onLogout }) => {
       ledger: 'TestNet'
     })
     if (userAccount.current) {
+      setLoggedOut(false);
       setUserAddress(userAccount.current[0]['address']);
-    } else { console.log(`Got nothing for userAddress: ${userAddress}`) }
+    } else { 
+      console.log(`Got nothing for userAddress: ${userAddress}`)
+     }
   }
 
   useEffect(() => {
     getUserAccount();
   }, [userAddress]);
-  // console.log(`User Address: ${userAddress}`)
+  
 
   const pathname = usePathname();
 
-  // const disconnectWallet = async () => {
-  //   console.log("Killing session for wallet with address: ", userAddress);
-  //   await AlgoSigner.disconnect();
-  //   router.push('/');
-  // }
+  const disconnectWallet = async () => {
+    console.log("Killing session for wallet with address: ", userAddress);
+    userAccount.current = undefined;
+    setUserAddress("");
+    setLoggedOut(true);
+    router.push('/');
+  }
+
 
   return (
     <>
@@ -92,11 +101,7 @@ const Layout = ({ children, pages, userName, onLogout }) => {
               ))}
               <NavItem
                 icon={<SignOut size={20} />}
-                onClick={(e) => {
-                  e.preventDefault();
-                  onLogout(e);
-                  // disconnectWallet();
-                }}
+                onClick={(e) => {disconnectWallet(); e.preventDefault(); }}
               >
                 Log out
               </NavItem>
