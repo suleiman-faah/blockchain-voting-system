@@ -53,21 +53,21 @@ const ChangeStatePage = () => {
             <Tr>
               <Td>John Doe</Td>
               <Td isNumeric>67</Td>
-              <Td>Some Useless Party</Td>
+              <Td>ACP</Td>
               <Td>Masters</Td>
               <Td isNumeric>2</Td>
             </Tr>
             <Tr>
               <Td>Samuel L Jackson</Td>
               <Td isNumeric>52</Td>
-              <Td>Another Useless Party</Td>
+              <Td>IFR</Td>
               <Td>Diploma</Td>
               <Td isNumeric>0</Td>
             </Tr>
             <Tr>
               <Td>Jane Doe</Td>
               <Td isNumeric>40</Td>
-              <Td>Yet Another Useless Party</Td>
+              <Td>NNY</Td>
               <Td>PhD</Td>
               <Td isNumeric>1</Td>
             </Tr>

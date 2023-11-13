@@ -153,7 +153,7 @@ const VotingAreaPage = () => {
         <VoterCard
           candidate="John Doe"
           disabled={disableAllButtons || clickedButton === 1}
-          party="Some Useless Party"
+          party="ACP"
           onVote={() => {
             submitVoteHandler(1, "John Doe");
           }}
@@ -161,7 +161,7 @@ const VotingAreaPage = () => {
         <VoterCard
           candidate="Samuel L Jackson"
           disabled={disableAllButtons || clickedButton === 2}
-          party="Another Useless Party"
+          party="IFR"
           onVote={() => {
             submitVoteHandler(2, "Samuel L Jackson");
           }}
@@ -169,7 +169,7 @@ const VotingAreaPage = () => {
         <VoterCard
           candidate="Jane Doe"
           disabled={disableAllButtons || clickedButton === 3}
-          party="Yet Another Useless Party"
+          party="NNY"
           onVote={() => {
             submitVoteHandler(3, "Jane Doe");
           }}
