@@ -31,6 +31,7 @@
     "framer-motion": "^6.5.1",
     "fs": "^0.0.1-security",
     "next": "13.4.19",
+    "next-cors": "^1.0.0",
     "pip": "^0.0.1",
     "postcss": "8.4.29",
     "python3": "^0.0.1",

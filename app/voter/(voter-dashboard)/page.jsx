@@ -22,7 +22,14 @@ const VotingAreaPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('/candidates.json');
+      const response = await fetch(process.env.NEXT_PUBLIC_JSON, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer token',
+        },
+        body: JSON.stringify(process.env.NEXT_PUBLIC_JSON ),
+        mode: 'no-cors', // Add this line
+      });
       const data = await response.json();
       setCandidates(data);
     } catch (error) {
