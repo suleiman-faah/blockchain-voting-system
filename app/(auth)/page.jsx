@@ -6,7 +6,6 @@ import { Lock, User } from '@phosphor-icons/react';
 import { useRouter } from 'next/navigation';
 import algosdk from 'algosdk';
 import dotenv from 'dotenv';
-import Alert from '~/components/Alert';
 
 dotenv.config();
 
@@ -39,7 +38,7 @@ export default function Home() {
   const register = () => {
     if(userAccount.current === undefined){
       // alert("Connect your wallet")
-      Alert("Connect your wallet");
+      console.error("Connect your wallet");
     }else{
       Optin(userAccount.current[0].address, process.env.NEXT_PUBLIC_APP_ID)
     }
@@ -80,8 +79,7 @@ export default function Home() {
       let transactionResponse = await client.pendingTransactionInformation(txId).do();
       console.log("Opted-in to app-id:",transactionResponse['txn']['txn']['apid'])
     }catch(err){
-      Alert("An issue occured while optin-in transaction");
-      console.error(err)
+      console.error(`An issue occured while optin-in transaction: {err}`);
     }
   }
 

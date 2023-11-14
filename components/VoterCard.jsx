@@ -7,7 +7,7 @@
 
 import React from 'react';
 
-const VoterCard = ({ name, party, age, qualificaton, onVote }) => {
+const VoterCard = ({ name, party, onVote }) => {
 // const VoterCard = ({ candidate, party, onVote, isDisabled }) => {
   return (
     <div className="w-max">
@@ -15,18 +15,11 @@ const VoterCard = ({ name, party, age, qualificaton, onVote }) => {
         <span className="text-white">
           {name}
         </span>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
         <span className="text-white">
-          {party}
+          Party: {party}
         </span>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-        <span className="text-white">
-          {age}
-        </span>
-        <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-        <span className="text-white">
-          {qualificaton}
-        </span>
+        <hr className="h-px my-4 bg-gray-200 border-0 dark:bg-gray-700"></hr>
       </div>
       <button
         onClick={onVote}
