@@ -14,7 +14,7 @@ dotenv.config();
 
   // get accounts from mnemonic
   const creatorMnemonic = "scan wheel heavy boy feature mind achieve crew comfort gauge valve crew assume doll pyramid insane toe tiger shed prevent color gown oil able inmate"
-  const userMnemonic = process.env.ACCOUNT_MNEMONIC;
+  const userMnemonic = process.env.NEXT_PUBLIC_ACCOUNT_MNEMONIC;
   const creatorAccount = algosdk.mnemonicToSecretKey(creatorMnemonic)
   const userAccount =  algosdk.mnemonicToSecretKey(userMnemonic)
   const creatorSecret = creatorAccount.sk
@@ -33,7 +33,7 @@ dotenv.config();
   const algodToken = process.env.API_KEY;
   const baseServer = 'https://testnet-algorand.api.purestake.io/ps2/';
   const port = "";
-  const headers ={"X-API-Key": process.env.API_KEY}  
+  const headers ={"X-API-Key": process.env.NEXT_PUBLIC_API_KEY}  
     
   console.log(process.env) 
   let client = new algosdk.Algodv2(algodToken, baseServer, port, headers)
