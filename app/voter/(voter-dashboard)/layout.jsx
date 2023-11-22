@@ -1,6 +1,6 @@
 'use client';
 
-import { ChartBarHorizontal, FlagPennant } from '@phosphor-icons/react';
+import { ChartBarHorizontal, FlagPennant, ChartPieSlice } from '@phosphor-icons/react';
 import Layout from '~/components/Layout';
 
 /**
@@ -23,6 +23,12 @@ const pages = [
     slug: 'results',
     path: '/voter/results',
     icon: FlagPennant,
+  },
+  {
+    name: 'Analytics',
+    slug: 'analytics',
+    path: '/voter/analytics',
+    icon: ChartPieSlice,
   },
 ];
 

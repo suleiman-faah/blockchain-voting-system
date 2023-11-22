@@ -103,7 +103,9 @@ const VotingAreaPage = () => {
   }
 
   return (
+    
     <div className="flex flex-wrap gap-5">
+    <title>Voting Area | Blockchain Voting System</title>
       {
         votees.map((votee, idx) => (
           <div key={idx}>

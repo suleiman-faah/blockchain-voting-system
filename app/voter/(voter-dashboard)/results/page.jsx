@@ -52,6 +52,7 @@ const ChangeStatePage = () => {
 
   return (
     <>
+      <title>Results | Blockchain Voting System</title>
       <div className="mb-24 flex flex-col items-center">
         <h2 className="mb-8 text-2xl font-bold">We have a Winner!</h2>
 

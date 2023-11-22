@@ -41,7 +41,7 @@ export const data = {
 const AnalyticsPage = () => {
   return (
     <>
-      <title>Analytics | Blockchain Voting System </title>
+      <title>Analytics | Admin</title>
 
       <Stack spacing={5} direction="row">
         <Stat className="max-w-[200px] rounded-lg border px-4 py-3">
