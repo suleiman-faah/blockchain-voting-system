@@ -22,7 +22,7 @@ const ChangeStatePage = () => {
       "name": "John Doe",
       "party": "LFR",
       "age": 24,
-      "votes": 2,
+      "votes": 12,
       "qualification": "Masters"
     },
     {
@@ -30,7 +30,7 @@ const ChangeStatePage = () => {
       "name": "Samuel L. Jackson",
       "party": "NDA",
       "age": 22,
-      "votes": 0,
+      "votes": 5,
       "qualification": "Diploma"
     },
     {
@@ -38,10 +38,15 @@ const ChangeStatePage = () => {
       "name": "Jane Doe",
       "party": "ICE",
       "age": 21,
-      "votes": 1,
+      "votes": 10,
       "qualification": "PHD"
     }
   ];
+
+  // Find the candidate with the highest number of votes
+  const { name: winner, party: winnerParty, votes: totalVotes } = votees.reduce((prev, current) => {
+    return (prev.votes > current.votes) ? prev : current;
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -57,10 +62,10 @@ const ChangeStatePage = () => {
         <h2 className="mb-8 text-2xl font-bold">We have a Winner!</h2>
 
         <p id="confettiId" className="text-3xl font-black">
-          John Doe — Some Useless party
+          { winner } — { winnerParty }
         </p>
         <p id="balloonsId" className="mt-8 text-xl text-primary">
-          2 votes
+          { totalVotes } votes
         </p>
       </div>
 
